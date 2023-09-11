@@ -1,4 +1,4 @@
-# README for SCD MPRA
+# README for CD MPRA
 created by rrsharp@unc.edu
 09/12/2023
 

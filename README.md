@@ -6,9 +6,9 @@ created by rrsharp@unc.edu
 
 1. Download files files from _GEO_ (X)
 2. Git clone or download our files and scripts to your local/virtual environment.
-3. Modify _config_scz.yml_ file within _files/_ folder (You only need to modify first three variables). 
+3. Modify _config_CD.yml_ file within _files/_ folder (You only need to modify first three variables). 
     - Modify _script_dir:_ to identify where the scripts/ from github are stored.
-    - Modify _scz_file_foldername:_ to identify where the files from GEO are stored. 
+    - Modify _cd_file_foldername:_ to identify where the files from GEO are stored. 
     - Modify _output_file_dir:_ to identify the location of the mpra result.
 
 ## RUNNING SCRIPTS

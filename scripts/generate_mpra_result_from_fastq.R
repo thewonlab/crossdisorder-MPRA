@@ -8,21 +8,21 @@ library(config)
 # LOADING ENV & FUNCS #
 #######################
 # loading config and getting wd
-config <- config::get(file = "where_the_config_file_is_stored/config_scz.yml")
-current_wd <- str_c(config$scz_file_foldername)
+config <- config::get(file = "where_the_config_file_is_stored/config_CD.yml")
+current_wd <- str_c(config$cd_file_foldername)
 
 # loading functions
 source(str_c(config$script_dir, config$read_file_function_scriptname))
 source(str_c(config$script_dir, config$create_count_matrix_functions_scriptname))
 
 # loading files
-variant_stat <- fread(config$scz_variant_statistics_filename)
-dna_count_file <- fread(config$scz_dna_count_filepath)
+variant_stat <- fread(config$cd_variant_statistics_filename)
+dna_count_file <- fread(config$cd_dna_count_filepath)
 
 # LOADING BARCODE DATA
 ####################
 setwd(current_wd)
-bcdat <- fread(config$scz_barcode_rda_filename)
+bcdat <- fread(config$cd_barcode_rda_filename)
 
 # grepping file name and generate list with files
 barcode_filenames <- list.files(pattern = config$bc_file_pattern)
@@ -141,4 +141,4 @@ mpra_result$variant <- rownames(mpra_result)
 
 setwd(config$output_file_dir)
 
-fwrite(mpra_result, config$scz_mpra_output_file, sep = "\t")
+fwrite(mpra_result, config$cd_mpra_output_file, sep = "\t")

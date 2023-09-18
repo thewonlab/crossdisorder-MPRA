@@ -8,13 +8,13 @@ library(config)
 # LOADING ENV & FUNCS #
 #######################
 # loading config and getting wd
-config <- config::get(file = "where_the_config_file_is_stored/config_scz.yml")
-current_wd <- str_c(config$scz_file_foldername)
+config <- config::get(file = "where_the_config_file_is_stored/config_CD.yml")
+current_wd <- str_c(config$cd_file_foldername)
 
 # CREATE MATRICES AND VARIANT INFO
 ###################
-dna_count_matrix <- fread(config$scz_dna_count_file)
-rna_count_matrix <- fread(config$scz_rna_count_file)
+dna_count_matrix <- fread(config$cd_dna_count_file)
+rna_count_matrix <- fread(config$cd_rna_count_file)
 
 variant_ids <- rownames(dna_count_matrix)
 
@@ -63,4 +63,4 @@ mpra_result$variant <- rownames(mpra_result)
 
 setwd(config$output_file_dir)
 
-fwrite(mpra_result, config$scz_mpra_output_file, sep = "\t")
+fwrite(mpra_result, config$cd_mpra_output_file, sep = "\t")

@@ -34,6 +34,9 @@ design_matrix <- model.matrix(~alt+batch)
 
 samples <- rep(1:repnum,2)
 
+colnames(dna_count_matrix) <- c(paste0("Replicate ", 1:repnum, " REF"), paste0("Replicate ", 1:repnum, " ALT"))
+colnames(rna_count_matrix) <- c(paste0("Replicate ", 1:repnum, " REF"), paste0("Replicate ", 1:repnum, " ALT"))
+
 # RUN MPRA
 ###################
 mpra_set <- MPRASet(DNA=dna_count_matrix, RNA=rna_count_matrix, eid=variant_ids, eseq=NULL, barcode=NULL)

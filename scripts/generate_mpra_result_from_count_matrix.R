@@ -11,6 +11,8 @@ library(config)
 config <- config::get(file = "where_the_config_file_is_stored/config_CD.yml")
 current_wd <- str_c(config$cd_file_foldername)
 
+setwd(current_wd)
+
 # CREATE MATRICES AND VARIANT INFO
 ###################
 dna_count_matrix <- fread(config$cd_dna_count_file)

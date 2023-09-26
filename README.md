@@ -4,7 +4,7 @@ created by rrsharp@unc.edu
 
 ## BEFORE RUNNING SCRIPTS
 
-1. Download files files from _GEO_ (X)
+1. Download files files from _GEO_ (GSE244011)
 2. Git clone or download our files and scripts to your local/virtual environment.
 3. Modify _config_CD.yml_ file within _files/_ folder (You only need to modify first three variables). 
     - Modify _script_dir:_ to identify where the scripts/ from github are stored.

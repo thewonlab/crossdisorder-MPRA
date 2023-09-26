@@ -25,20 +25,6 @@ variant_stat %<>% .[, 1:2]
 variant_stat$rsid <- unlist(lapply(strsplit(variant_stat$name, split = "_"), "[[", 2))
 variant_seqs <- variant_stat[base::match(variant_ids, variant_stat$rsid), "variant"]
 
-###This to create design matrix I added - check over, needs to be moved
-MPRAet <- MPRAet(DNA=dna_matrix, RNA=rna_matrix, eid=varid, eseq=NULL, barcode=NULL)
-
-mpraresult <- mpralm(object=MPRAet, 
-                    design=design_matrix, 
-                    plot=T,
-                    aggregate="none",
-                    normalize=T, 
-                    block=samples,
-                    model_type="corr_groups")
-mpradat <- topTable(mpraresult, coef = 2, number = Inf)
-MPRAig <- mpradat[mpradat$adj.P.Val<0.05,]
-
-
 # CREATE DESIGN MATRIX
 ###################
 batch <- as.factor(c(rep(c(rep(1,10),rep(2,12)),2))) 
@@ -51,26 +37,20 @@ samples <- rep(1:repnum,2)
 # RUN MPRA
 ###################
 mpra_set <- MPRASet(DNA=dna_count_matrix, RNA=rna_count_matrix, eid=variant_ids, eseq=NULL, barcode=NULL)
-mpra_set <- MPRASet(
-  DNA = dna_count_matrix,
-  RNA = rna_count_matrix,
-  eid = variant_ids,
-  eseq = variant_seqs,
-  barcode = NULL
-)
 
 mpra_lm <- mpralm(
-  object = mpra_set,
-  design = design_matrix,
-  plot = T,
-  aggregate = "none",
-  normalize = T,
-  block = samples,
-  model_type = "corr_groups"
+      object=mpra_set, 
+      design=design_matrix, 
+      plot=T,
+      aggregate="none",
+      normalize=T, 
+      block=samples,
+      model_type="corr_groups"
 )
 
 mpra_result <- topTable(mpra_lm, coef = 2, number = Inf)
 mpra_result$variant <- rownames(mpra_result)
+MPRAsig <- mpra_result[mpra_result$adj.P.Val<0.05,]
 
 setwd(config$output_file_dir)
 

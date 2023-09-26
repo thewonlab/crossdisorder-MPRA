@@ -23,9 +23,7 @@ variant_ids <- rownames(dna_count_matrix)
 dna_count_matrix %<>% .[, -1]
 rna_count_matrix %<>% .[, -1]
 
-variant_stat %<>% .[, 1:2]
-variant_stat$rsid <- unlist(lapply(strsplit(variant_stat$name, split = "_"), "[[", 2))
-variant_seqs <- variant_stat[base::match(variant_ids, variant_stat$rsid), "variant"]
+repnum = 22
 
 # CREATE DESIGN MATRIX
 ###################
